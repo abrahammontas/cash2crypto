@@ -1,0 +1,120 @@
+[*] Make order_id in orders table random CHAR(8) for extra security
+[*] Make user_id in users table random CHAR(8) for extra security
+[*] Change bitcoin column type in orders table to double(8,5)
+
+Admin:
+[*] Add Completed Orders to admin/dashboard
+[*] Allow admin to change status of order
+[*] When admin changes status to issue, allow admin to create note explaining the issue and have note saved in issues table.
+[*] After the note is created, the user is emailed with the contents of the note, explaining the issue with the order
+[*] There will be a ‘resolved’ button next to the note in the issues table that will send the order back to the pending table
+[*] Allow admin to update bitcoin amount
+[*] In orders lists, allow admin to click on Order User ID and have that users photo_id popup (need to add this feature to users)
+[*] When admin moves order to completed, user is emailed that order has been completed
+[*] Add users table, and allow admin to deactivate/reactivate user
+
+Users:
+[*] Remove ‘Wallet’ navigation item.
+[*] In profile, allow user to upload photo id image and add/remove bitcoin wallets
+[*] user must upload PHOTO ID before being able to purchase bitcoins
+
+
+Notes:
+[-] I will do "how to” page, “locations” page, and “contact”page after you have completed backend work
+[-] I will also make guest layout responsive after you have completed backend work
+[*] There will no only be two emails to the user, “issue email” and “completed email”
+[*] There will also be two emails to the admin: “new order email” and “user uploaded receipt email"
+[-] Bitcoin Exchange Rate: make exchange rate update every time page is loaded (or do you not recommend?)
+[*] In user profile: remove selfie image (only need selfie receipt after user has ordered)
+[*] Buy Bitcoins page: Get Bitcoins button stays grayed out when choosing Wallet Address dropdown (please fix)
+[*] Once user uploads the selfie receipt, email the admin user(s)
+
+Profile & Buy
+[*] When user adds wallet address the wallet is automatically searched on blockchain.info. 
+If the wallet address comes back as invalid, the user will receive an error that their wallet address is invalid.
+“Your Bitcoin wallet address is invalid. Please submit a different wallet address” 
+
+[*] Users need ability to nickname their wallet when adding it. 
+[*] Then when they buy bitcoins, the nickname of the wallet will come up instead of the wallet address
+
+Limits
+[*] When user hits limit user receives error message and is blocked from proceeding with order
+[*] limit remaining function added
+[*] admin can set limit for specific user
+
+Update 2
+[*] Make the numbers left-aligned like in screen shot
+[*] After user presses buy bitcoins redirect to the current order with message saying "Your order has been created."
+[*] Have error pop up after user presses the buy button (if they have a current order)
+    Error message after pressing by bitcoins if user has a current order: “Please cancel or complete your current order before you can submit a new order”
+[*] Remove blockchain links for the wallets
+[*] Allow user to access buy bitcoins page before they upload their photo id. 
+    When they press buy bitcoins, have Error Message: "Please upload your photo id in your <a href='/profile'>profile</a>."
+[?] Remove the disabled submit button feature. See image
+[*] After user logs in, redirect to the user's dashboard. 
+[*] On the user's first login, create message, saying: "Welcome to your new Cash To Crypto customer account! To place your first order, upload your photo id in your <a href='/profile'>profile</a> and click the buy bitcoins button at the top of the page."
+[*] Add c2clogo.png to navbar-brand section
+[*] Remove "Thanks for choosing Bitcoin Depot" on current orders page please
+[*] make order_id only 7 characters long and all numbers?
+[*] Please add 
+		<div class="row font-main">
+		<div class="col-xs-2">
+		<strong>Email:</strong>
+		</div>
+		<div class="col-xs-4 text-left">
+		{{Auth::user()->email}}
+		</div>
+		<div class="col-xs-2">
+		<strong>Phone:</strong>
+		</div>
+		<div class="col-xs-4 text-left">
+		{{Auth::user()->phone}}
+		</div>
+		</div>
+		<hr />
+    to user.profile
+    below the First Name, Last Name row
+[*] Please add this contact form to the bottom of each page and create a scroll link
+    send email to support@cashtocrypto.com
+[*] allow users to cancel an order
+
+
+admin updates:
+[*] Enable all companies to be shown in the completed section (currently only three companies are shown)
+[*] Remove User ID column
+[*] Replace with column called Name, which will show $user->firstName . ‘ ‘ . $user->lastName 
+    Name will be hyperlinked to user profile so admin can view user information.
+
+[*] Remove the Total Charged column and change the USD amount to the Total Charged amount.
+[*] Combine the Receipt and Selfie columns into one column call Photos.
+	For each record create a View Photos button 
+	When the view photos button is clicked a modal will appear with the customer’s photo_id, receipt photo, and selfie with receipt.
+	The modal will be three columns:
+		Photo Id
+		Receipt photo
+		Selfie with receipt
+
+
+[*] Remove pagination for orders. Instead do this:
+	When a company is clicked, the accordion expands as a scrollbar. When the admin click a company tab, the accordion expands and shows 10 orders and then uses a scrollbar to view the rest of the company’s orders. 
+
+[*] Also, when user cancels order, the daily and monthly amounts need to be refunded the order amount 
+[*] Also, please change pending orders to show only users that have uploaded both selfie image and receipt image
+	
+[*] And boss says some completed orders aren't showing in completed orders section and only in All Orders section
+	Please make sure all of the orders are showing in correct Orders section.
+
+
+Locations: This will go in the locations tab when the user logs in
+
+[*] The map will need to show only the banks that the admin has listed on the banks page in the admin panel. When the admin adds a bank, it will be added to the map, and when the admin removes or disables a bank, it will be removed from the map.
+[*] The map will show all active banks in a 5 mile radius (default location is Atlanta if user does not share location). 
+[*] There will be a search bar where the user can search by zipcode.
+[-] The bank name will be shown above each pin on the map without the user needing to click or hover on a pin. 
+[*] When a user hovers over a pin, the pin will enlarge and still show the bank's name in addition to the bank's address.
+[*] The bank list will also be shown in a list view on the right side of the map. The list view will show the bank name and address. When the user hovers over a bank in the list view the according bank pin will highlight on the map.
+[*] Route
+
+
+[*] In completed orders section can you show all companies as well as filter by companies?
+[*] and make the fancybox image allowed to rotate 90 degrees with left and right arrows
